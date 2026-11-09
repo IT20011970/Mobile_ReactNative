@@ -3,9 +3,11 @@ import { FlatList, View, Text, Image, Pressable, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import { tips } from '../../../data/tips';
+import { useFavorites } from '../../../context/FavoritesContext';
 
 export default function TipsListScreen() {
   const router = useRouter();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const [filter, setFilter] = useState('All');
   const [filterVisible, setFilterVisible] = useState(false);
 
@@ -26,17 +28,22 @@ export default function TipsListScreen() {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Pressable onPress={() => router.push(`/tips/${item.id}`)}>
-            <Image source={{ uri: item.image }} />
-            <View>
+          <View>
+            <Pressable onPress={() => router.push(`/tips/${item.id}`)}>
+              <Image source={{ uri: item.image }} />
               <Text>{item.category}</Text>
               <Text>{item.title}</Text>
               <Text>{item.summary}</Text>
               <Text>
                 {item.author} · {item.dateAdded}
               </Text>
-            </View>
-          </Pressable>
+            </Pressable>
+
+            {/* Bookmark button */}
+            <Pressable onPress={() => toggleFavorite(item.id)}>
+              <Text>{isFavorite(item.id) ? '★ Saved' : '☆ Save'}</Text>
+            </Pressable>
+          </View>
         )}
         ListEmptyComponent={<Text>No entries in this category.</Text>}
       />

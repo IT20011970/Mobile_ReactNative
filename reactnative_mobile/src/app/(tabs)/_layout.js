@@ -19,6 +19,14 @@ export default function TabsLayout() {
           tabBarIcon: () => <Text>*</Text>,
         }}
       />
+      <Tabs.Screen
+        name="add"
+        options={{
+          title: 'Add',
+          headerShown: true,
+          tabBarIcon: () => <Text>+</Text>,
+        }}
+      />
     </Tabs>
   );
 }

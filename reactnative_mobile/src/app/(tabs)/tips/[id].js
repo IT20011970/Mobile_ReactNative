@@ -1,10 +1,11 @@
 import { ScrollView, View, Text, Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 
-import { tips } from '../../../data/tips';
+import { useTips } from '../../../context/TipsContext';
 
 export default function TipDetailScreen() {
   const { id } = useLocalSearchParams();
+  const { tips } = useTips();
   const tip = tips.find((t) => t.id === id);
 
   if (!tip) {

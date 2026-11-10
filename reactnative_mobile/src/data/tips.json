@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "title": "Network printer stops responding after router restart",
+    "category": "Hardware",
+    "summary": "Printer drops off the network when it gets a new IP from DHCP.",
+    "details": "The printer was set to DHCP, so a router restart gave it a different IP. Fix: set a static IP on the printer, or reserve its MAC in the router DHCP table, then update the port in Printers & Scanners.",
+    "author": "J. Perera",
+    "dateAdded": "2026-08-22",
+    "tags": ["printer", "dhcp", "static ip", "offline"],
+    "image": "https://picsum.photos/seed/printer/400/250"
+  },
+  {
+    "id": "2",
+    "title": "Network printer stops responding after router restart",
+    "category": "Hardware",
+    "summary": "Printer drops off the network when it gets a new IP from DHCP.",
+    "details": "The printer was set to DHCP, so a router restart gave it a different IP. Fix: set a static IP on the printer.",
+    "author": "Tharindu Kasun",
+    "dateAdded": "2026-08-22",
+    "tags": ["printer", "dhcp", "static ip", "offline"],
+    "image": "https://picsum.photos/seed/printer/400/250"
+  },
+  {
+    "id": "3",
+    "title": "SAP GUI error: Partner not reached (connection refused)",
+    "category": "SAP",
+    "summary": "SAP logon fails with a connection-refused message after a VPN change.",
+    "details": "The message server host in SAP Logon still pointed at the old hostname. Fix: update the Application Server / Message Server entry, confirm the system number, and make sure the VPN route to the SAP subnet is up.",
+    "author": "N. Fernando",
+    "dateAdded": "2026-09-03",
+    "tags": ["sap", "logon", "vpn"],
+    "image": "https://picsum.photos/seed/sap/400/250"
+  },
+  {
+    "id": "4",
+    "title": "Printer driver install fails with error 0x00000057",
+    "category": "Software",
+    "summary": "Windows rejects the driver during Add Printer.",
+    "details": "A corrupted driver store entry blocked the install. Fix: run 'printui /s /t2' to remove the old driver package, delete it from the driver store, reboot, then install the latest signed driver from the vendor.",
+    "author": "S. Jayawardena",
+    "dateAdded": "2026-09-18",
+    "tags": ["driver", "windows", "printer"],
+    "image": "https://picsum.photos/seed/driver/400/250"
+  },
+  {
+    "id": "5",
+    "title": "VPN connects but no internal access",
+    "category": "Networking",
+    "summary": "Tunnel is up but internal hosts are unreachable.",
+    "details": "Split-tunnel was pushing only part of the internal range. Fix: add the missing subnet to the VPN routes, flush DNS, and confirm the internal DNS server is set on the VPN adapter.",
+    "author": "A. Silva",
+    "dateAdded": "2026-10-01",
+    "tags": ["vpn", "dns", "routing"],
+    "image": "https://picsum.photos/seed/vpn/400/250"
+  }
+]

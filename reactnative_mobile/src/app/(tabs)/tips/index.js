@@ -1,27 +1,27 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { FlatList, View, Text, Image, Pressable, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 
-import { tips } from '../../../data/tips';
+import { useTips } from '../../../context/TipsContext';
 import { useFavorites } from '../../../context/FavoritesContext';
+
+const CATEGORIES = ['All', 'SAP', 'Software', 'Hardware', 'Networking'];
 
 export default function TipsListScreen() {
   const router = useRouter();
+  const { tips } = useTips();
   const { isFavorite, toggleFavorite } = useFavorites();
-  const [filter, setFilter] = useState('All');
+
   const [filterVisible, setFilterVisible] = useState(false);
+  const [category, setCategory] = useState('All');
 
-  const categories = useMemo(
-    () => ['All', ...Array.from(new Set(tips.map((t) => t.category)))],
-    []
-  );
-
-  const data = filter === 'All' ? tips : tips.filter((t) => t.category === filter);
+  const data =
+    category === 'All' ? tips : tips.filter((t) => t.category === category);
 
   return (
     <View>
       <Pressable onPress={() => setFilterVisible(true)}>
-        <Text>{filter === 'All' ? 'Filter by category' : filter} ▾</Text>
+        <Text>{category === 'All' ? 'Filter by category' : category} ▾</Text>
       </Pressable>
 
       <FlatList
@@ -58,17 +58,17 @@ export default function TipsListScreen() {
         <Pressable onPress={() => setFilterVisible(false)}>
           <View>
             <Text>Filter by category</Text>
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <Pressable
                 key={cat}
                 onPress={() => {
-                  setFilter(cat);
+                  setCategory(cat);
                   setFilterVisible(false);
                 }}
               >
                 <Text>
                   {cat}
-                  {filter === cat ? '' : ''}
+                  {category === cat ? '' : ''}
                 </Text>
               </Pressable>
             ))}

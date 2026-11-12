@@ -9,7 +9,6 @@ const TipsContext = createContext(null);
 export function TipsProvider({ children }) {
   const [tips, setTips] = useState([]);
 
-
   useEffect(() => {
     (async () => {
       try {
@@ -26,7 +25,6 @@ export function TipsProvider({ children }) {
     })();
   }, []);
 
- 
   const addTip = async (entry) => {
     const newTip = { ...entry, id: String(Date.now()) };
     const next = [newTip, ...tips];

@@ -12,14 +12,14 @@
   },
   {
     "id": "2",
-    "title": "Network printer stops responding after router restart",
+    "title": "Laptop battery not charging after dock firmware update",
     "category": "Hardware",
-    "summary": "Printer drops off the network when it gets a new IP from DHCP.",
-    "details": "The printer was set to DHCP, so a router restart gave it a different IP. Fix: set a static IP on the printer.",
+    "summary": "Battery shows 'plugged in, not charging' on the docking station.",
+    "details": "A dock firmware update reset the USB-C power-delivery profile. Fix: update the laptop's USB-C/Thunderbolt firmware to match, reseat the dock, and set the charging policy back to 'always charge' in the vendor power utility.",
     "author": "Tharindu Kasun",
-    "dateAdded": "2026-08-22",
-    "tags": ["printer", "dhcp", "static ip", "offline"],
-    "image": "https://picsum.photos/seed/printer/400/250"
+    "dateAdded": "2026-08-25",
+    "tags": ["laptop", "battery", "dock", "usb-c"],
+    "image": "https://picsum.photos/seed/laptop/400/250"
   },
   {
     "id": "3",

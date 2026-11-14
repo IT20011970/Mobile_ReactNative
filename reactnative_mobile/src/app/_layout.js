@@ -4,15 +4,19 @@ import { Stack } from 'expo-router';
 
 import { FavoritesProvider } from '../context/FavoritesContext';
 import { TipsProvider } from '../context/TipsContext';
+import { registerForNotificationsAsync } from '../utils/notifications';
 
 export default function RootLayout() {
-  
   const appState = useRef(AppState.currentState);
   const [showBanner, setShowBanner] = useState(false);
 
+  // Ask for notification permission + set up the Android channel on launch.
+  useEffect(() => {
+    registerForNotificationsAsync();
+  }, []);
+
   useEffect(() => {
     const handler = (nextState) => {
-      
       if (appState.current === 'background' && nextState === 'active') {
         setShowBanner(true);
         setTimeout(() => setShowBanner(false), 3000);

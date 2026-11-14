@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 
 import { useTips } from '../../../context/TipsContext';
 import { useFavorites } from '../../../context/FavoritesContext';
+import { sendLocalNotification } from '../../../utils/notifications';
 
 const CATEGORIES = ['All', 'SAP', 'Software', 'Hardware', 'Networking'];
 
@@ -17,6 +18,15 @@ export default function TipsListScreen() {
 
   const data =
     category === 'All' ? tips : tips.filter((t) => t.category === category);
+
+  // Toggle the bookmark; fire a notification only when SAVING (not removing).
+  const onBookmark = (item) => {
+    const saving = !isFavorite(item.id);
+    toggleFavorite(item.id);
+    if (saving) {
+      sendLocalNotification('Tip bookmarked!', item.title);
+    }
+  };
 
   return (
     <View>
@@ -40,7 +50,7 @@ export default function TipsListScreen() {
             </Pressable>
 
             {/* Bookmark button */}
-            <Pressable onPress={() => toggleFavorite(item.id)}>
+            <Pressable onPress={() => onBookmark(item)}>
               <Text>{isFavorite(item.id) ? '★ Saved' : '☆ Save'}</Text>
             </Pressable>
           </View>
@@ -48,7 +58,7 @@ export default function TipsListScreen() {
         ListEmptyComponent={<Text>No entries in this category.</Text>}
       />
 
-      {/* Filter Modal */}  
+      {/* Filter Modal */}
       <Modal
         visible={filterVisible}
         transparent
@@ -66,10 +76,7 @@ export default function TipsListScreen() {
                   setFilterVisible(false);
                 }}
               >
-                <Text>
-                  {cat}
-                  {category === cat ? '' : ''}
-                </Text>
+                <Text>{cat}</Text>
               </Pressable>
             ))}
           </View>

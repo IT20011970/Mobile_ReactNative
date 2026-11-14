@@ -10,7 +10,7 @@ export default function RootLayout() {
   const appState = useRef(AppState.currentState);
   const [showBanner, setShowBanner] = useState(false);
 
-  // Ask for notification permission + set up the Android channel on launch.
+
   useEffect(() => {
     registerForNotificationsAsync();
   }, []);

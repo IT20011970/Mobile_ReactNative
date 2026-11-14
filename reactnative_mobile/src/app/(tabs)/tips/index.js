@@ -19,7 +19,7 @@ export default function TipsListScreen() {
   const data =
     category === 'All' ? tips : tips.filter((t) => t.category === category);
 
-  // Toggle the bookmark; fire a notification only when SAVING (not removing).
+
   const onBookmark = (item) => {
     const saving = !isFavorite(item.id);
     toggleFavorite(item.id);

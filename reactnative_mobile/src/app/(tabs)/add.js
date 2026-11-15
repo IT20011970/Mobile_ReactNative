@@ -14,9 +14,16 @@ export default function AddScreen() {
   const [category, setCategory] = useState('Hardware');
   const [summary, setSummary] = useState('');
   const [details, setDetails] = useState('');
+  const [tags, setTags] = useState('');
 
   const onSave = () => {
     if (!title.trim()) return;
+
+    const parsedTags = tags
+      .split(/[,\s]+/)
+      .map((t) => t.replace(/^#/, '').trim())
+      .filter(Boolean);
+
     addTip({
       title: title.trim(),
       category,
@@ -24,12 +31,13 @@ export default function AddScreen() {
       details: details.trim(),
       author: 'You',
       dateAdded: new Date().toISOString().slice(0, 10),
-      tags: [],
+      tags: parsedTags,
       image: 'https://picsum.photos/seed/' + Date.now() + '/400/250',
     });
     setTitle('');
     setSummary('');
     setDetails('');
+    setTags('');
     router.push('/tips');
   };
 
@@ -64,6 +72,16 @@ export default function AddScreen() {
         placeholderTextColor="#94A3B8"
         value={summary}
         onChangeText={setSummary}
+      />
+
+      <Text style={styles.label}>Tags</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="laptop, battery"
+        placeholderTextColor="#94A3B8"
+        value={tags}
+        onChangeText={setTags}
+        autoCapitalize="none"
       />
 
       <Text style={styles.label}>Cause & Fix</Text>

@@ -1,20 +1,25 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
+const isWeb = Platform.OS === 'web';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true, // older SDKs
-    shouldShowBanner: true, // SDK 53+
-    shouldShowList: true, // SDK 53+
-    shouldPlaySound: true,
-    shouldSetBadge: false,
-  }),
-});
+if (!isWeb) {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true, // older SDKs
+      shouldShowBanner: true, // SDK 53+
+      shouldShowList: true, // SDK 53+
+      shouldPlaySound: true,
+      shouldSetBadge: false,
+    }),
+  });
+}
 
 
 export async function registerForNotificationsAsync() {
+  if (isWeb) return false;
 
+ 
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
       name: 'default',
@@ -22,7 +27,7 @@ export async function registerForNotificationsAsync() {
     });
   }
 
-
+ 
   const { status: existing } = await Notifications.getPermissionsAsync();
   let status = existing;
   if (existing !== 'granted') {
@@ -32,7 +37,9 @@ export async function registerForNotificationsAsync() {
   return status === 'granted';
 }
 
+
 export async function sendLocalNotification(title, body) {
+  if (isWeb) return;
   await Notifications.scheduleNotificationAsync({
     content: { title, body },
     trigger: null,

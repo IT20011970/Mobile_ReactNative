@@ -25,7 +25,7 @@ The app has 4 main screens and a few hidden routing and layout files:
 - Add Entry (add.js): This form is used to add new Tips to the knowledge base it has entries like title, category, summary, tags, and cause & fix. 
 - Background Files: While index.js reroutes the root URL to the home screen, _layout.js files manage the structure and navigation of the application.
 
-## 4. Core React Native components used, and where
+## 4. Core React Native components used, and where they are implemented
 
 - View: Used across every screen for layout containers.
 - Text: Used across every screen to display all text.
@@ -53,3 +53,9 @@ Routing is file-based, meaning the folder and file layout under src/app/ forms t
 - src/app/(tabs)/tips/_layout.js: Stack navigator nested inside the Knowledge Base tab.
 - src/app/(tabs)/tips/index.js: List screen for the /tips route.
 - src/app/(tabs)/tips/[id].js: Detail screen for the dynamic /tips/:id route.
+
+## 6. Local notifications 
+
+- Notification handler: Must be configured once at the module level using setNotificationHandler(...) outside of any component so notifications appear when the app is open.
+- Permissions: Verify access with getPermissionsAsync() and only call requestPermissionsAsync() if not already granted.
+- Android channel: Android 8+ requires setNotificationChannelAsync('default', ...) to prevent notifications from being silently dropped.

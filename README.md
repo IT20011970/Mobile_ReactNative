@@ -31,3 +31,16 @@ The app has 4 main screens and a few hidden routing and layout files:
 - React / Hooks: useState, useEffect, useRef, useContext, createContext.
 - Expo Router: Stack, Tabs, Redirect, useRouter, useLocalSearchParams.
 - Storage / Notifications: @react-native-async-storage/async-storage, expo-notification
+
+## 4. How Expo Router is structured (app/ directory)
+
+Routing is file-based, meaning the folder and file layout under src/app/ forms the navigation tree (configured via expo-router):
+
+- src/app/_layout.js: Root Stack that wraps the app in context providers, registers notifications, runs the AppState listener, and renders global banners.
+- src/app/index.js: Redirects "/" to "/tips" to give the app a starting route.
+- src/app/(tabs)/_layout.js: Tab navigator handling Knowledge Base, Favorites, and Add Entry.
+- src/app/(tabs)/favorites.js: Tab screen for the /favorites route.
+- src/app/(tabs)/add.js: Tab screen for the /add route.
+- src/app/(tabs)/tips/_layout.js: Stack navigator nested inside the Knowledge Base tab.
+- src/app/(tabs)/tips/index.js: List screen for the /tips route.
+- src/app/(tabs)/tips/[id].js: Detail screen for the dynamic /tips/:id route.

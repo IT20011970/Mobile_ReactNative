@@ -10,4 +10,8 @@ Department of Statistics & Computer Science, University of Kelaniya
 ## 2. Screens - how many and what each does
 
 The app has 4 main screens and a few hidden routing and layout files:
-- Knowledge Base
+- Knowledge Base:
+- Entry Detail:
+- Favorites:
+- Add Entry:
+- Background Files:

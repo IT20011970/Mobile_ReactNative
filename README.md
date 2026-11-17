@@ -65,3 +65,10 @@ Notifications are triggered in two places:
 - Tip bookmarked: Fires a "Tip bookmarked!" notification from tips/index.js when a user saves a tip.
 - New tip added: Fires a "New tip added" notification from TipsContext.addTip when a new entry is created.
 - Platform support: Local notifications only display on a physical device or an Android emulator. They do not show on web or the iOS Simulator
+
+
+Implementation (src/utils/notifications.js):
+
+- setNotificationHandler: Configured at the module level, though it is skipped on the web since notifications are unsupported there.
+- registerForNotificationsAsync(): Sets up the Android channel and requests permissions, called once on mount in src/app/_layout.js.
+- sendLocalNotification(title, body): Fires an immediate local notification using scheduleNotificationAsync({ content, trigger: null }).

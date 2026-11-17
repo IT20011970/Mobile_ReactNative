@@ -54,7 +54,7 @@ Routing is file-based, meaning the folder and file layout under src/app/ forms t
 - src/app/(tabs)/tips/index.js: List screen for the /tips route.
 - src/app/(tabs)/tips/[id].js: Detail screen for the dynamic /tips/:id route.
 
-## 6. Local notifications 
+## 6. Local notifications — research & implementation
 
 - Notification handler: Must be configured once at the module level using setNotificationHandler(...) outside of any component so notifications appear when the app is open.
 - Permissions: Verify access with getPermissionsAsync() and only call requestPermissionsAsync() if not already granted.
@@ -72,3 +72,5 @@ Implementation (src/utils/notifications.js):
 - setNotificationHandler: Configured at the module level, though it is skipped on the web since notifications are unsupported there.
 - registerForNotificationsAsync(): Sets up the Android channel and requests permissions, called once on mount in src/app/_layout.js.
 - sendLocalNotification(title, body): Fires an immediate local notification using scheduleNotificationAsync({ content, trigger: null }).
+
+- Research approach: Based on the official Expo documentation, all SDKs still support local notifications in Expo Go. That means the app has three known silent-failure traps and allows the application to run without a custom build.

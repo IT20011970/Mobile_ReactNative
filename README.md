@@ -1,5 +1,6 @@
 # IT Knowledge Base - Mobile App
-**Index No:** MSC-CS-2025-013
+**Index No:** FGS/MSC/CS/2025/013
+**Name:**  Gayan Poornima Bamunusinghe
 
 Department of Statistics & Computer Science, University of Kelaniya
 **COSC 64173 - Mobile Computing - Assignment 01**

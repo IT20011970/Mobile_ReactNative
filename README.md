@@ -59,3 +59,9 @@ Routing is file-based, meaning the folder and file layout under src/app/ forms t
 - Notification handler: Must be configured once at the module level using setNotificationHandler(...) outside of any component so notifications appear when the app is open.
 - Permissions: Verify access with getPermissionsAsync() and only call requestPermissionsAsync() if not already granted.
 - Android channel: Android 8+ requires setNotificationChannelAsync('default', ...) to prevent notifications from being silently dropped.
+
+Notifications are triggered in two places:
+
+- Tip bookmarked: Fires a "Tip bookmarked!" notification from tips/index.js when a user saves a tip.
+- New tip added: Fires a "New tip added" notification from TipsContext.addTip when a new entry is created.
+- Platform support: Local notifications only display on a physical device or an Android emulator. They do not show on web or the iOS Simulator

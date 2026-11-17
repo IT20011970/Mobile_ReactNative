@@ -4,10 +4,19 @@
 Department of Statistics & Computer Science, University of Kelaniya
 **COSC 64173 - Mobile Computing - Assignment 01**
 
-## 1. Demonstration Video
+## 1. What is the application, and what problem does it solve?
+
+- **IT Knowledge Base** is a mobile app for an IT department to properly record KTs (Knowledge Transfers) and look up fixes for recurring issues with minimal effort.
+
+- **The problem:** Support employees in an office frequently resolve the same problems (a printer driver installation issue, an internal system issue, VPN issues). One person typically has the knowledge of *how* each was fixed. The next technician must find the solution again from scratch if that person becomes busy or quits.
+
+- **The solution:** Each resolved issue is recorded once as an entry (problem, cause, and fix) under a category. Anyone can add new entries, share their knowledge, browse previous knowledge tips, read the entire fix, bookmark and save helpful ones, and filter by category.
+
+
+## 2. Demonstration Video
 **Live / Video demo:**  - https://drive.google.com/file/d/1yZOjpvKNz_JdoF6MavpUwo7Xn8WPhR59/view?usp=sharing
 
-## 2. Screens - how many and what each does
+## 3. Screens - how many and what each does
 
 The app has 4 main screens and a few hidden routing and layout files:
 - Knowledge Base: This is the home screen where users can browse tips, filter them, and bookmark them to save to favourites.
@@ -16,7 +25,7 @@ The app has 4 main screens and a few hidden routing and layout files:
 - Add Entry (add.js): This form is used to add new Tips to the knowledge base it has entries like title, category, summary, tags, and cause & fix. 
 - Background Files: While index.js reroutes the root URL to the home screen, _layout.js files manage the structure and navigation of the application.
 
-## 3. Core React Native components used, and where
+## 4. Core React Native components used, and where
 
 - View: Used across every screen for layout containers.
 - Text: Used across every screen to display all text.
@@ -32,7 +41,7 @@ The app has 4 main screens and a few hidden routing and layout files:
 - Expo Router: Stack, Tabs, Redirect, useRouter, useLocalSearchParams.
 - Storage / Notifications: @react-native-async-storage/async-storage, expo-notification
 
-## 4. How Expo Router is structured (app/ directory)
+## 5. How Expo Router is structured (app/ directory)
 
 Routing is file-based, meaning the folder and file layout under src/app/ forms the navigation tree (configured via expo-router):
 
